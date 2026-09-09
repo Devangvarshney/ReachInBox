@@ -306,10 +306,10 @@ export const EmailDetail: React.FC = () => {
                     }}
                   >
                     <div style={{ fontSize: '13px', fontWeight: 600, color: '#111827' }}>
-                      {att.filename}
+                      {att.name}
                     </div>
                     <div style={{ fontSize: '11px', color: '#9ca3af', marginTop: '2px' }}>
-                      {att.size ? `${(att.size / 1024).toFixed(1)} KB` : 'Attachment'}
+                      {att.size || 'Attachment'}
                     </div>
                   </div>
                 ))}
