@@ -3,6 +3,8 @@ import { useAuth } from '../../context/AuthContext';
 import { useEmail } from '../../context/EmailContext';
 import { Clock, Send, ChevronDown, LogOut, Sparkles } from 'lucide-react';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 export const Sidebar: React.FC = () => {
   const { user, logout } = useAuth();
   const {
@@ -315,7 +317,7 @@ export const Sidebar: React.FC = () => {
         </div>
 
         <a
-          href="http://localhost:5000/admin/queues"
+          href={`${API_BASE_URL}/admin/queues`}
           target="_blank"
           rel="noreferrer"
           style={{
