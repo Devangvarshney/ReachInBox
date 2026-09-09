@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  avatar    String?
+  createdAt DateTime @default(now())
+}
+
+model SenderAccount {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  name         String?
+  host         String   @default("smtp.ethereal.email")
+  port         Int      @default(587)
+  secure       Boolean  @default(false)
+  user         String   @default("")
+  pass         String   @default("")
+  isEthereal   Boolean  @default(true)
+  accessToken  String?
+  refreshToken String?
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+model EmailSchedule {
+  id                 String    @id @default(uuid())
+  fromEmail          String
+  fromName           String?
+  toEmail            String
+  toName             String?
+  subject            String
+  body               String
+  status             String    @default("scheduled") // scheduled, processing, sent, failed, cancelled
+  scheduledFor       DateTime
+  delaySeconds       Int       @default(0)
+  hourlyLimit        Int       @default(0)
+  jobId              String?   @unique
+  sentAt             DateTime?
+  messageId          String?
+  etherealPreviewUrl String?
+  retryCount         Int       @default(0)
+  errorLog           String?
+  leadsData          String?   // JSON stringified metadata
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model AppConfig {
+  id        String   @id @default("singleton")
+  slackWebhookUrl String?
+  slackEnabled    Boolean  @default(false)
+  updatedAt       DateTime @updatedAt
+}

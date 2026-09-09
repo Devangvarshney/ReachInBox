@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Production Builds
+dist/
+dist-ssr/
+build/
+*/dist/
+
+# Environment Variables & Secrets (CRITICAL: Never commit .env)
+.env
+.env.*
+!.env.example
+*.env
+server/.env
+server/.env.*
+!server/.env.example
+
+# Database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+dev.db
+dev.db-journal
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor & OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary / Scratch files
+tmp/
+temp/
