@@ -7,7 +7,7 @@ export interface IAppConfig {
   updatedAt?: Date;
 }
 
-const AppConfigSchema = new Schema<IAppConfig>(
+const AppConfigSchema = new Schema(
   {
     _id: { type: String, default: 'singleton' },
     slackWebhookUrl: { type: String, default: null },
@@ -15,7 +15,6 @@ const AppConfigSchema = new Schema<IAppConfig>(
   },
   {
     timestamps: true,
-    _id: false,
   }
 );
 
