@@ -1,9 +1,10 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
-export interface IAppConfig extends Document {
-  slackWebhookUrl?: string;
+export interface IAppConfig {
+  _id: string;
+  slackWebhookUrl?: string | null;
   slackEnabled: boolean;
-  updatedAt: Date;
+  updatedAt?: Date;
 }
 
 const AppConfigSchema = new Schema<IAppConfig>(
@@ -14,6 +15,7 @@ const AppConfigSchema = new Schema<IAppConfig>(
   },
   {
     timestamps: true,
+    _id: false,
   }
 );
 
